@@ -55,11 +55,13 @@ class DatabaseManager:
 # 2. MOBILE-FIRST INTERFACE
 # ---------------------------------------------------------
 # Replace your old 'db = DatabaseManager(...)' line with this:
+# Create the DB object using the secrets you just saved
 db = DatabaseManager(
     st.secrets["db_host"],
     st.secrets["db_user"],
     st.secrets["db_password"],
-    st.secrets["db_name"]
+    st.secrets["db_name"],
+    st.secrets["db_port"]
 )
 
 st.set_page_config(
