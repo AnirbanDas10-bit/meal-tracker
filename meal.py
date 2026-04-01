@@ -18,7 +18,11 @@ class DatabaseManager:
 
     def save_meal(self, meal):
         try:
-            my_db = mysql.connector.connect(**self.config)
+           my_db = mysql.connector.connect(
+                **self.config,
+                ssl_verify_cert=False, # This skips the local CA file requirement
+                ssl_disabled=False     # This ensures encryption is ON
+            )
             my_cursor = my_db.cursor()
             my_cursor.execute("INSERT INTO meal_details (meal_type, description_) VALUES (%s, %s)",
                               (meal.meal_type, meal.description))
